@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #007bff;
+            color: white;
+        }
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+        .profile-picture {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        .profile-details {
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        .profile-details p {
+            margin: 10px 0;
+        }
+        .logout {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #dc3545;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .logout:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Patient Dashboard</h1>
+    </div>
+    <div class="profile-container">
+        {% if request.user.profile.profile_picture %}
+            <img src="{{ request.user.profile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
+        {% else %}
+            <img src="{% static 'th.jfif' %}" alt="Default Profile Picture" class="profile-picture">
+        {% endif %}
+        <div class="profile-details">
+            <p><strong>Welcome, {{ request.user.profile.first_name }}</strong></p>
+            <p>First Name: {{ request.user.profile.first_name }}</p>
+            <p>Last Name: {{ request.user.profile.last_name }}</p>
+            <p>Email: {{ request.user.email }}</p>
+            <p>Address: {{ request.user.profile.address_line1 }},
+               {{ request.user.profile.city }}, {{ request.user.profile.state }},
+               {{ request.user.profile.pincode }}</p>
+        </div>
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="logout">Logout</button>
+        </form>
+    </div>
+</body>
+</html>

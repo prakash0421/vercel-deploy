@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ffcccc, #ffe6e6); /* Light red gradient */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px 10px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 900px; /* Increased max-width for better layout */
+            box-sizing: border-box;
+        }
+        h2 {
+            text-align: center;
+            color: #d32f2f; /* Bold red */
+            margin-bottom: 25px;
+            font-size: 2.5em;
+        }
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two-column layout */
+            gap: 20px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 1em;
+            color: #333;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        input[type="file"]:focus {
+            border-color: #d32f2f; /* Focus color */
+        }
+        button {
+            background: linear-gradient(to right, #d32f2f, #b71c1c); /* Gradient red */
+            color: #fff;
+            border: none;
+            padding: 15px;
+            text-align: center;
+            display: inline-block;
+            font-size: 1.1em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            width: 100%;
+            grid-column: span 2; /* Full width in two-column layout */
+        }
+        button:hover {
+            background: linear-gradient(to right, #b71c1c, #d32f2f);
+            transform: scale(1.02);
+        }
+        .form-group.error input {
+            border-color: #f44336;
+        }
+        .form-group.error .error-message {
+            color: #f44336;
+            font-size: 0.875em;
+            margin-top: 5px;
+        }
+        .radio-group {
+            display: flex;
+            gap: 15px;
+        }
+        .radio-group label {
+            margin: 0;
+            font-weight: normal;
+        }
+        .account-link {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 1em;
+            grid-column: span 2; /* Centered in two-column layout */
+        }
+        .account-link a {
+            color: #d32f2f;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .account-link a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            form {
+                grid-template-columns: 1fr; /* Single-column layout on smaller screens */
+            }
+            button, .account-link {
+                grid-column: span 1; /* Adjust button and link to fit single-column layout */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Signup</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group{% if user_form.username.errors %} error{% endif %}">
+                <label for="id_username">Username:</label>
+                {{ user_form.username }}
+                {% for error in user_form.username.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <div class="form-group{% if user_form.email.errors %} error{% endif %}">
+                <label for="id_email">Email:</label>
+                {{ user_form.email }}
+                {% for error in user_form.email.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <div class="form-group{% if user_form.password1.errors %} error{% endif %}">
+                <label for="id_password1">Password:</label>
+                {{ user_form.password1 }}
+                {% for error in user_form.password1.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <div class="form-group{% if user_form.password2.errors %} error{% endif %}">
+                <label for="id_password2">Confirm Password:</label>
+                {{ user_form.password2 }}
+                {% for error in user_form.password2.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                <label>Are you a patient?</label>
+                {{ user_form.is_patient }}
+            </div>
+            <div class="form-group">
+                <label>Are you a doctor?</label>
+                {{ user_form.is_doctor }}
+            </div>
+            <div class="form-group">
+                <label for="id_first_name">First Name:</label>
+                {{ profile_form.first_name }}
+            </div>
+            <div class="form-group">
+                <label for="id_last_name">Last Name:</label>
+                {{ profile_form.last_name }}
+            </div>
+            <div class="form-group">
+                <label for="id_profile_picture">Profile Picture:</label>
+                {{ profile_form.profile_picture }}
+            </div>
+            <div class="form-group">
+                <label for="id_address_line1">Address Line 1:</label>
+                {{ profile_form.address_line1 }}
+            </div>
+            <div class="form-group">
+                <label for="id_city">City:</label>
+                {{ profile_form.city }}
+            </div>
+            <div class="form-group">
+                <label for="id_state">State:</label>
+                {{ profile_form.state }}
+            </div>
+            <div class="form-group">
+                <label for="id_pincode">Pincode:</label>
+                {{ profile_form.pincode }}
+            </div>
+            <button type="submit">Signup</button>
+        </form>
+        <div class="account-link">
+            Already have an account? <a href="{% url 'login' %}">Login here</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #ffcccc, #ff9999); /* Lighter red gradient */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 700px;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #d32f2f; /* Bold red */
+            margin-bottom: 20px;
+            font-size: 2.8em;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+        p {
+            margin-bottom: 30px;
+            font-size: 1.3em;
+            line-height: 1.7;
+            color: #c62828; /* Slightly darker red */
+            max-width: 85%;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        a {
+            display: inline-block;
+            background-color: #d32f2f; /* Bold red */
+            color: #ffffff;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        a:hover {
+            background-color: #b71c1c; /* Darker red */
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        .section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 700px;
+            margin: 20px auto;
+        }
+        .section img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            font-size: 2.2em;
+            color: #d32f2f; /* Bold red */
+            margin-bottom: 15px;
+        }
+        .section p {
+            font-size: 1.2em;
+            color: #c62828; /* Slightly darker red */
+            max-width: 90%;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+        @media (max-width: 768px) {
+            .container, .section {
+                padding: 25px;
+                margin: 10px;
+            }
+            .links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.4em;
+            }
+            p {
+                font-size: 1em;
+            }
+            a {
+                padding: 12px 25px;
+                font-size: 1.1em;
+            }
+            .section h2 {
+                font-size: 1.8em;
+            }
+            .section p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Our Hospital</h1>
+        <p>Your health is our priority. Explore our services and join us in ensuring a healthier tomorrow.</p>
+        <div class="links">
+            <a href="{% url 'signup' %}">Sign Up</a>
+            <a href="{% url 'login' %}">Login</a>
+        </div>
+    </div>
+
+</body>
+</html>
