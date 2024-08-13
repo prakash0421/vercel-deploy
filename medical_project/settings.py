@@ -84,11 +84,11 @@ LOGOUT_REDIRECT_URL='login'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres.iqnadtlrkusqlsrmhnjg',
-        'PASSWORD': 's8V4s6LqtzjQInsD',
-        'HOST': 'aws-0-ap-south-1.pooler.supabase.com',
-        'PORT': '6543',
+        'NAME': 'postgres',                             # Supabase database name
+        'USER': 'postgres.qhygyhaqwusjqdzodapq',        # Supabase user
+        'PASSWORD': 'XHzjU06U1B40yPZ7',                 # Supabase password
+        'HOST': 'aws-0-ap-south-1.pooler.supabase.com', # Supabase host
+        'PORT': '6543',                                 # Supabase port
     }
 }
 
