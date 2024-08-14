@@ -142,7 +142,7 @@ AUTH_USER_MODEL='medical_app.CustomUser'
 
 # Add 'storages' to your INSTALLED_APPS
 
-Add 'storages' to your INSTALLED_APPS
+
 
 # AWS S3 Settings (directly in settings.py)
 AWS_ACCESS_KEY_ID = 'AKIAZI2LFMFHJ6XCNZVC'
