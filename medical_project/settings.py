@@ -138,39 +138,27 @@ USE_TZ = True
 
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL='medical_app.CustomUser'
+AUTH_USER_MODEL = 'medical_app.CustomUser'
 
-
-# Add 'storages' to your INSTALLED_APPS
-
-
-
-# AWS S3 Settings (directly in settings.py)
+# AWS S3 Settings
 AWS_ACCESS_KEY_ID = 'AKIAZI2LFMFHJ6XCNZVC'
 AWS_SECRET_ACCESS_KEY = 'SJ0TXRnt//Lm9kiHi52xuXiNo3Uv8gji+5zK5U18'
 AWS_STORAGE_BUCKET_NAME = 'prakash-1234'
-AWS_S3_REGION_NAME = 'us-east-1'  # Example: 'us-west-1'
+AWS_S3_REGION_NAME = 'us-east-1'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_LOCATION ='static'
+
+# Media and Static files configuration
+MEDIA_URL = 'https://prakash-1234.s3.us-east-1.amazonaws.com/media/'
+STATIC_URL = 'https://prakash-1234.s3.us-east-1.amazonaws.com/static/'
 
 # Optional settings
-AWS_S3_FILE_OVERWRITE = False  # To prevent overwriting files with the same name
-AWS_DEFAULT_ACL = None  # Recommended to avoid issues with ACLs
-AWS_QUERYSTRING_AUTH = False  # To make the URLs for static files public without query string
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+AWS_QUERYSTRING_AUTH = False
 
-
-MEDIA_URL = 'https://prakash-1234.s3.us-east-1.amazonaws.com/'
-# Optional settings
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-AWS_S3_FILE_OVERWRITE = False  # To prevent overwriting files with the same name
-AWS_DEFAULT_ACL = None  # Recommended to avoid issues with ACLs
-AWS_QUERYSTRING_AUTH = False  # To make the URLs for static files public without query string
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
@@ -178,4 +166,5 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 MEDIA_ROOT = ''
+
 
