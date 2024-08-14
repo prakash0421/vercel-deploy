@@ -157,6 +157,7 @@ AWS_QUERYSTRING_AUTH = False  # To make the URLs for static files public without
 
 MEDIA_URL = 'https://prakash-1234.s3.us-east-1.amazonaws.com/'
 # Optional settings
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 AWS_S3_FILE_OVERWRITE = False  # To prevent overwriting files with the same name
 AWS_DEFAULT_ACL = None  # Recommended to avoid issues with ACLs
 AWS_QUERYSTRING_AUTH = False  # To make the URLs for static files public without query string
