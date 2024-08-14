@@ -129,12 +129,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Additional locations for static files (optional)
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
 
 
 # Default primary key field type
@@ -144,8 +139,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL='medical_app.CustomUser'
 
-MEDIA_URL='/media/'
-MEDIA_ROOT=BASE_DIR/ 'media'
+
 # Add 'storages' to your INSTALLED_APPS
 
 # AWS S3 Settings (directly in settings.py)
@@ -169,4 +163,3 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 # Media files (User uploads)
  # or 'django.core.files.storage.FileSystemStorage' if local
-MEDIA_ROOT = BASE_DIR / 'media'
