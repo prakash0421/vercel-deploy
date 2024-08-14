@@ -24,9 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--*71!kik#^myyj*4la+(0a7gx%fg__)il*od*0plzlg@7+mxoh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['.vercel.app']
+
 
 
 # Application definition
@@ -38,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'medical_app'
+    'medical_app',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -81,6 +83,7 @@ LOGOUT_REDIRECT_URL='login'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -91,7 +94,6 @@ DATABASES = {
         'PORT': '6543',                                 # Supabase port
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -126,7 +128,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Additional locations for static files (optional)
@@ -144,3 +146,27 @@ AUTH_USER_MODEL='medical_app.CustomUser'
 
 MEDIA_URL='/media/'
 MEDIA_ROOT=BASE_DIR/ 'media'
+# Add 'storages' to your INSTALLED_APPS
+
+# AWS S3 Settings (directly in settings.py)
+AWS_ACCESS_KEY_ID = 'AKIAZI2LFMFHCF3XOUH2'
+AWS_SECRET_ACCESS_KEY = 'Km3BBvfDvrS/RrAk32UbWX8x3dvbyNpFuXXoQSo5'
+AWS_STORAGE_BUCKET_NAME = 'vercelll'
+AWS_S3_REGION_NAME = 'us-east-1'  # Example: 'us-west-1'
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+# Optional settings
+AWS_S3_FILE_OVERWRITE = False  # To prevent overwriting files with the same name
+AWS_DEFAULT_ACL = None  # Recommended to avoid issues with ACLs
+AWS_QUERYSTRING_AUTH = False  # To make the URLs for static files public without query string
+
+# Static files (CSS, JavaScript, Images)
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
+
+# Media files (User uploads)
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
+# Media files (User uploads)
+ # or 'django.core.files.storage.FileSystemStorage' if local
+MEDIA_ROOT = BASE_DIR / 'media'
