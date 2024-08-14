@@ -154,18 +154,19 @@ AWS_S3_FILE_OVERWRITE = False  # To prevent overwriting files with the same name
 AWS_DEFAULT_ACL = None  # Recommended to avoid issues with ACLs
 AWS_QUERYSTRING_AUTH = False  # To make the URLs for static files public without query string
 
+
+MEDIA_URL = 'https://prakash-1234.s3.us-east-1.amazonaws.com/'
+# Optional settings
+AWS_S3_FILE_OVERWRITE = False  # To prevent overwriting files with the same name
+AWS_DEFAULT_ACL = None  # Recommended to avoid issues with ACLs
+AWS_QUERYSTRING_AUTH = False  # To make the URLs for static files public without query string
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+
 # Media files (Uploads)
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION }
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-STATICFILES_DIRS = os.path.join(BASE_DIR,'static')
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-# Media files (Uploads)
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-MEDIA_URL='/media/'
-MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+MEDIA_ROOT = ''
 
