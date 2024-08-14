@@ -152,7 +152,7 @@ AWS_S3_REGION_NAME = 'us-east-1'  # Example: 'us-west-1'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 
-MEDIA_URL = 'https://pra.s3.<region>.amazonaws.com/'
+MEDIA_URL = 'https://prakash-1234.s3.us-east-1.amazonaws.com/'
 # Optional settings
 AWS_S3_FILE_OVERWRITE = False  # To prevent overwriting files with the same name
 AWS_DEFAULT_ACL = None  # Recommended to avoid issues with ACLs
