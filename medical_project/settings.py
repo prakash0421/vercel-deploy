@@ -147,7 +147,7 @@ AWS_SECRET_ACCESS_KEY = 'SJ0TXRnt//Lm9kiHi52xuXiNo3Uv8gji+5zK5U18'
 AWS_STORAGE_BUCKET_NAME = 'prakash-1234'
 AWS_S3_REGION_NAME = 'us-east-1'  # Example: 'us-west-1'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-
+AWS_LOCATION ='static'
 
 # Optional settings
 AWS_S3_FILE_OVERWRITE = False  # To prevent overwriting files with the same name
@@ -158,12 +158,14 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # Media files (Uploads)
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-STATIC_URL = '/static/'
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION }
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+
+STATICFILES_DIRS = os.path.join(BASE_DIR,'static')
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Media files (Uploads)
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-MEDIA_URL = 'https://prakash-1234.s3.amazonaws.com/'
+MEDIA_URL='/media/'
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
