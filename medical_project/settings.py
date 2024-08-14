@@ -142,13 +142,17 @@ AUTH_USER_MODEL='medical_app.CustomUser'
 
 # Add 'storages' to your INSTALLED_APPS
 
-# AWS S3 Settings (directly in settings.py)
-AWS_ACCESS_KEY_ID = 'AKIAZI2LFMFHCF3XOUH2'
-AWS_SECRET_ACCESS_KEY = 'Km3BBvfDvrS/RrAk32UbWX8x3dvbyNpFuXXoQSo5'
-AWS_STORAGE_BUCKET_NAME = 'vercelll'
-AWS_S3_REGION_NAME = 'us-east-1'  # Example: 'us-west-1'
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+Add 'storages' to your INSTALLED_APPS
 
+# AWS S3 Settings (directly in settings.py)
+AWS_ACCESS_KEY_ID = 'AKIAZI2LFMFHJ6XCNZVC'
+AWS_SECRET_ACCESS_KEY = 'SJ0TXRnt//Lm9kiHi52xuXiNo3Uv8gji+5zK5U18'
+AWS_STORAGE_BUCKET_NAME = 'prakash-1234'
+AWS_S3_REGION_NAME = 'us-east-1'  # Example: 'us-west-1'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+
+MEDIA_URL = 'https://pra.s3.<region>.amazonaws.com/'
 # Optional settings
 AWS_S3_FILE_OVERWRITE = False  # To prevent overwriting files with the same name
 AWS_DEFAULT_ACL = None  # Recommended to avoid issues with ACLs
